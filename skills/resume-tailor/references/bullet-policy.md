@@ -11,7 +11,7 @@ Start every achievement bullet with a concrete action verb; never start with Aft
 
 Classify by the distinctive evidence: use Decision-led for a tradeoff; otherwise use Collaboration-led only if removing people or alignment destroys the claim; otherwise use Workstream-led for a bounded workstream; else use Delivery-led. `Contributed` alone is not Collaboration. Route choice never upgrades ownership, delivery, metric, scope, causality, or technical depth.
 
-Use a directional mix, not a hard quota. Delivery-led is normally the majority; Decision-led increases in judgment-heavy roles; Collaboration-led and Workstream-led increase in fundamentals-heavy roles. When verified evidence exists, retain at least one Collaboration-led and one Workstream-led bullet across the APM draft. Never force arithmetic or invent evidence.
+Use a directional mix, not a hard quota. Delivery-led is normally the majority; Decision-led increases in judgment-heavy roles; Collaboration-led and Workstream-led increase in fundamentals-heavy roles. When verified evidence exists, retain at least one Decision-led bullet across an APM résumé; one to two is the normal target. Increase it for prioritization-, ambiguity-, analytical-problem-solving-, trade-off-, or technical-product-judgment-heavy roles. Never invent a choice or upgrade a team decision to meet the target. When verified evidence exists, retain at least one Collaboration-led and one Workstream-led bullet across the APM draft. Never force arithmetic or invent evidence.
 
 Emphasis shifts and accepted patterns
 -------------------------------------
