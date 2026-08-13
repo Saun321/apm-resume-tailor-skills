@@ -1,0 +1,4 @@
+interface:
+  display_name: "PM JD Intake"
+  short_description: "Score JD fit before spending time tailoring"
+  default_prompt: "Use $pm-jd-intake to compare my uploaded resume with this job description and tell me whether tailoring is worth it."

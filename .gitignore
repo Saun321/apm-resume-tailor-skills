@@ -1,0 +1,6 @@
+.DS_Store
+*.pdf
+*.docx
+run.md
+.active.lock
+output/
