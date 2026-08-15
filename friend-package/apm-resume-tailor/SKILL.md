@@ -63,10 +63,11 @@ H2【Decision-making under ambiguity】：0.5 → 1
 
 调整方向：当前缺少 <missing capability>；改为 <truthful rewrite logic>。
 Drop：<optional displaced bullet and justification>。
+**【Point Change】**
 • <final candidate bullet>
 ```
 
-Omit Drop when nothing is removed. Put the candidate bullet directly below the direction/Drop line. Leave one blank line before the next change.
+Omit Drop when nothing is removed. Put `**【Point Change】**` after the direction or optional Drop line, then put the candidate bullet on the immediately following line with no blank line. Leave one blank line before the next change.
 
 ### Keyword Match
 

@@ -80,8 +80,13 @@ test("public skills use Decision-first changed-bullet workflow", async () => {
     "Keyword Match",
     "optional approved Bullet Library",
     "internal Preview QA",
+    "【Point Change】",
   ]) {
     assert.match(tailor, new RegExp(phrase, "i"));
+  }
+  for (const policy of [tailor, await readFile(skillPath, "utf8")]) {
+    assert.match(policy, /\*\*【Point Change】\*\*\r?\n•/);
+    assert.doesNotMatch(policy, /\*\*【Point Change】\*\*\r?\n\s*\r?\n•/);
   }
   assert.doesNotMatch(
     `${intake}\n${tailor}`,

@@ -38,10 +38,11 @@ H2【Decision-making under ambiguity】：0.5 → 1
 
 调整方向：当前缺少 <missing capability evidence>；改为 <truthful rewrite logic>。
 Drop：<optional displaced bullet and why it is safe to remove>。
+**【Point Change】**
 • <final candidate bullet>
 ```
 
-Omit `Drop` when nothing is removed. Put the candidate bullet directly below the direction or Drop line. Leave one blank line before the next change block. Do not show internal allocation or router labels.
+Omit `Drop` when nothing is removed. Put `**【Point Change】**` after the direction or optional Drop line, then put the candidate bullet on the immediately following line with no blank line. Leave one blank line before the next change block. Do not show internal allocation or router labels.
 
 Candidate bullets must start with an action word, target 22–28 English words, never exceed 30 words or two rendered lines, preserve ownership and metrics, bold one high-value delivery/decision/capability when supported, and include a defensible result when available.
 
