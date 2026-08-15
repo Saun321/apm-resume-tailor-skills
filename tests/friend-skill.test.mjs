@@ -87,6 +87,8 @@ test("public skills use Decision-first changed-bullet workflow", async () => {
   for (const policy of [tailor, await readFile(skillPath, "utf8")]) {
     assert.match(policy, /\*\*【Point Change】\*\*\r?\n•/);
     assert.doesNotMatch(policy, /\*\*【Point Change】\*\*\r?\n\s*\r?\n•/);
+    assert.match(policy, /&lt;[^&\n]+&gt;/);
+    assert.doesNotMatch(policy, /<u>|<\/u>/i);
   }
   assert.doesNotMatch(
     `${intake}\n${tailor}`,

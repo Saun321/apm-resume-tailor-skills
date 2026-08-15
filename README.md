@@ -86,7 +86,7 @@ No Story Bank or experience archive is required. Supplemental claims remain `ver
 ### Tailoring
 
 1. Core Evidence Changes mapped to M/N/H requirements.
-2. Keyword Match with discussion-only underlines.
+2. Keyword Match with discussion-only `<keyword>` markers.
 3. One approval for all displayed changes.
 4. Internal layout QA and direct PDF delivery.
 

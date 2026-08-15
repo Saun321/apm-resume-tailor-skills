@@ -48,16 +48,16 @@ Candidate bullets must start with an action word, target 22–28 English words, 
 
 ### Keyword Match
 
-Show full bullets changed only through ordinary JD vocabulary. Underline only the changed phrases in the discussion; remove all underlines from the final résumé.
+Show full bullets changed only through ordinary JD vocabulary. Enclose each changed phrase as visible `<keyword>` by emitting `&lt;keyword&gt;` in Markdown. Remove the angle-bracket wrappers from the final résumé while preserving their inner words.
 
 ```text
 Experience #3：
-• Led a cross-functional evaluation workstream, defining <u>success criteria</u>, <u>bad-case taxonomy</u>, and <u>release recommendations</u>.
+• Led a cross-functional evaluation workstream, defining &lt;success criteria&gt;, &lt;bad-case taxonomy&gt;, and &lt;release recommendations&gt;.
 
 Skills：
-Add：<u>Product Roadmapping</u>, <u>AI Evaluation</u>
-Remove：<u>outdated or low-value term</u>
-Reorder：move <u>Experiment Design</u> earlier.
+Add：&lt;Product Roadmapping&gt;, &lt;AI Evaluation&gt;
+Remove：&lt;outdated or low-value term&gt;
+Reorder：move &lt;Experiment Design&gt; earlier.
 ```
 
 Keep lines inside one entry adjacent; use one blank line only between entries. Keyword changes cannot invent evidence, ownership, tools, or metrics.
@@ -70,7 +70,7 @@ After state `changes-approved`:
 
 1. create a derivative without overwriting the uploaded résumé;
 2. apply only approved changes and preserve everything else;
-3. strip discussion-only underline annotations;
+3. strip discussion-only angle-bracket wrappers while preserving their inner words;
 4. render and inspect the actual preview using `references/layout-policy.md`;
 5. if QA requires a material semantic change, return only the affected bullet for approval; otherwise continue automatically;
 6. generate the PDF from the validated build and rerun page, text, overflow, link, and visual checks;

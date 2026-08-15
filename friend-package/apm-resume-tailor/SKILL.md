@@ -71,16 +71,16 @@ Omit Drop when nothing is removed. Put `**【Point Change】**` after the direct
 
 ### Keyword Match
 
-Show keyword-only changed bullets and Skills adjustments. Underline only changed phrases during discussion and remove those underlines from the final résumé.
+Show keyword-only changed bullets and Skills adjustments. Enclose each changed phrase as visible `<keyword>` by emitting `&lt;keyword&gt;` in Markdown. Remove the angle-bracket wrappers from the final résumé while preserving their inner words.
 
 ```text
 Experience #3：
-• Led a product workstream using <u>success criteria</u> and <u>release recommendations</u>.
+• Led a product workstream using &lt;success criteria&gt; and &lt;release recommendations&gt;.
 
 Skills：
-Add：<u>Product Roadmapping</u>
-Remove：<u>low-value term</u>
-Reorder：move <u>Experiment Design</u> earlier.
+Add：&lt;Product Roadmapping&gt;
+Remove：&lt;low-value term&gt;
+Reorder：move &lt;Experiment Design&gt; earlier.
 ```
 
 The user may approve all, edit one bullet, reject a direction, or add evidence. Revise only affected blocks. Approval of every displayed change is final content approval.
@@ -118,7 +118,7 @@ Shift emphasis without changing facts: foreground delivery for shipping-heavy JD
 
 ## 3. Internal Preview QA and PDF
 
-After changed-content approval, create a derivative without overwriting the uploaded résumé. Remove discussion underlines, render the actual preview, and perform internal Preview QA for page count, two-line bullets, bolding consistency, clipping, overlap, links, selectable text, and reading order.
+After changed-content approval, create a derivative without overwriting the uploaded résumé. Remove discussion-only angle-bracket wrappers while preserving their inner words, render the actual preview, and perform internal Preview QA for page count, two-line bullets, bolding consistency, clipping, overlap, links, selectable text, and reading order.
 
 If QA requires a material semantic change, return only the affected bullet. Otherwise generate the PDF directly and return a clickable link. If rendering tools are unavailable, state that limitation and return the approved changes without pretending a file exists.
 

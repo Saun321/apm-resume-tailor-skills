@@ -7,7 +7,7 @@ Treat rendering as an internal acceptance gate after changed-content approval.
 - Keep the uploaded résumé's page target, section order, and visual hierarchy unless the user approved a change.
 - Reuse an uploaded HTML or document template when available.
 - Change content before changing geometry.
-- Remove discussion-only underline annotations before rendering.
+- Remove discussion-only angle-bracket wrappers before rendering while preserving their inner keywords.
 
 ## Internal Preview QA
 
