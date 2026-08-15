@@ -42,7 +42,7 @@ cp -R skills/resume-tailor ~/.claude/skills/
 
 For another Agent-Skills-compatible tool, copy both folders into its skills directory.
 
-For a one-file starter that needs only a résumé and JD, download [`dist/apm-resume-tailor-friend.zip`](dist/apm-resume-tailor-friend.zip). It includes the accepted bullet-pattern examples, but explicitly forbids copying their facts or metrics into another person's résumé.
+For a friend-ready starter that needs only a résumé and JD, download [`dist/APM-Resume-Tailor-Friend.zip`](dist/APM-Resume-Tailor-Friend.zip). It contains a Chinese guide and swimlane plus the English Skill and Bullet Design reference; examples explicitly forbid copying their facts or metrics into another person's résumé.
 
 ## First run
 
