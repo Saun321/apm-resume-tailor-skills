@@ -1,32 +1,26 @@
-# Preview and PDF Layout Policy
+# Internal Preview and PDF Layout Policy
 
-Treat rendering as an acceptance gate, not cosmetic polish.
+Treat rendering as an internal acceptance gate after changed-content approval.
 
 ## Preserve by default
 
-- Keep the uploaded résumé's page target, section order, and visual hierarchy unless the user approves a change.
-- Reuse the user's HTML or document template when available.
+- Keep the uploaded résumé's page target, section order, and visual hierarchy unless the user approved a change.
+- Reuse an uploaded HTML or document template when available.
 - Change content before changing geometry.
+- Remove discussion-only underline annotations before rendering.
 
-## Preview checks
+## Internal Preview QA
 
 Inspect the actual rendered artifact for:
 
-- every achievement bullet at no more than two lines when that constraint is part of the selected layout;
+- each achievement bullet within the selected two-line limit;
 - no clipping, overlap, orphan fragments, or awkward third-line wraps;
-- consistent alignment, spacing, and hierarchy;
-- working links;
-- readable contact details and section headings;
+- consistent alignment, spacing, hierarchy, and semantic bolding;
+- working links and readable contact details;
 - the intended page count.
+
+If QA requires a material change to meaning, ownership, scope, or result, return only that bullet for approval. Otherwise continue directly to PDF without another user gate.
 
 ## PDF checks
 
-Confirm:
-
-- page size and page count match the approved preview;
-- text is selectable and extraction follows normal reading order;
-- links remain active when the format supports them;
-- the page is not a full-page image;
-- no content changed between the approved preview and final PDF.
-
-If the environment cannot render a preview or PDF, return the approved draft and the exact missing capability. Do not claim completion or approval.
+Confirm page size/count, selectable text, normal extraction and reading order, active links when supported, and final visual quality. The page must not be a full-page raster. If rendering is unavailable, state the limitation and do not claim completion.

@@ -1,73 +1,78 @@
 ---
 name: resume-tailor
-description: Tailor an uploaded product-management resume for an already-approved JD using a persisted Intake handoff and only verified evidence. Use after PM JD Intake when the user has explicitly authorized tailoring and wants a complete draft, HTML or image preview, and approval-gated PDF. Preserve truthful ownership and the uploaded structure by default.
+description: Turn an accepted PM JD into a compact changed-bullet discussion using verified evidence, then treat approved changes as final content approval, run internal Preview QA, and generate a downloadable PDF. Use after PM JD Intake or when the user explicitly requests tailoring.
 ---
 
 # Resume Tailor
 
-Move one approved application through **Evidence Allocation → Complete Draft → Preview → PDF**. Do not rescore the opportunity or restart Intake.
+Use **Core Evidence Changes + Keyword Match → changed-content approval → internal Preview QA → PDF**. Do not rescore the opportunity or repeat unchanged résumé content.
 
-## Require the handoff
+## Load the handoff and sources
 
-Load:
+Load the current job handoff, exact JD, current résumé, and only the verified evidence sources named by the handoff. An optional approved Bullet Library may accelerate wording selection, but it is never required and never becomes a fact source.
 
-1. The current job's `run.md`, created from the PM JD Intake run template.
-2. The exact JD or immutable snapshot named by the run.
-3. The uploaded résumé named by the run.
-4. Only the evidence sources named by the run.
-
-Require state `tailoring-authorized` or later. If the handoff is missing, stale, or not authorized, stop and run `pm-jd-intake` first. In a fresh conversation, reconstruct state only from these files; do not depend on prior chat.
-
-Read these references before drafting:
+Read completely:
 
 - `references/evidence-policy.md`
 - `references/bullet-policy.md`
 - `references/layout-policy.md`
 
-Use one writer per run directory. At the start, run `node <this-skill>/scripts/run-lock.mjs claim <run-directory> <task-or-thread-id>`. If the exclusive `.active.lock` already exists, stop and report its owner; never overwrite or automatically clear a stale lock. Release it with the same owner ID after final completion or explicit cancellation. Treat the original résumé and evidence files as read-only.
+Use one writer per job directory. If the included lock script is used, claim the directory before writing and release it after final completion. Treat the source résumé, evidence files, and optional library as read-only.
 
-## Allocate evidence
+## Allocate internally
 
-1. Map the 4–6 highest-value M/N/H requirements to existing résumé slots.
-2. Use experience bullets as the primary Must-have proof. Use projects only when they fill a real gap and do not imply production ownership.
-3. Give each bullet one main product claim. Avoid repeating the same PM category across multiple bullets.
-4. Preserve the uploaded résumé's sections, order, page target, and bullet allocation by default. Propose a structural trade only when it materially improves Core coverage, and require explicit approval before applying it.
-5. Ask at most one proactive question, only when the answer changes Core coverage or a material structure trade. If unanswered, use the safer supported claim and continue.
+Map the highest-value M/N/H requirements to existing résumé slots. Preserve sections, entry order, page target, and bullet allocation by default. Propose a structural trade only when it materially improves Core coverage, explain any displaced content, and require approval of the changed bullet set before applying it.
 
-Apply the ownership and evidence rules in `references/evidence-policy.md`. Keep routine keyword, grammar, compression, skills-order, and bold changes silent. Surface only evidence additions, replacements, splits, merges, deletions, ownership/scope/causality changes, structural trades, or unresolved Core gaps.
+Ask at most one question, only when the answer changes Core coverage or a material structure trade. Otherwise use the safer supported claim and continue.
 
-## Deliver the Complete Draft
+## 1. Tailoring Discussion
 
-Return one whole-draft review in this order:
+Output exactly two sections.
 
-1. `Draft Strategy`: requirement allocation and any approved structure decision.
-2. `Full Résumé Draft`: every section and bullet, not only changed lines.
-3. `Material Change Log`: 2–4 important judgments with original, final, source locator, and rationale.
-4. Optional `Remaining Core Gap`: only when it can still change the application decision.
+### Core Evidence Changes
 
-Show the Complete Draft in chat. Before the user approves it, persist only `run.md` and `.active.lock`; do not create a draft file, change log, HTML, résumé snapshot, manifest, screenshot, or PDF. After approval, update `run.md` to `draft-approved`.
+```text
+[M1 · H2] Experience #2 · Replace
+M1【AI evaluation and release decisions】：0.5 → 1
+H2【Decision-making under ambiguity】：0.5 → 1
 
-## Create the preview
+调整方向：当前缺少 <missing capability evidence>；改为 <truthful rewrite logic>。
+Drop：<optional displaced bullet and why it is safe to remove>。
+• <final candidate bullet>
+```
 
-After draft approval:
+Omit `Drop` when nothing is removed. Put the candidate bullet directly below the direction or Drop line. Leave one blank line before the next change block. Do not show internal allocation or router labels.
 
-1. Create a job-specific derivative; never overwrite the uploaded résumé.
-2. Reuse an uploaded HTML template when available. Otherwise create the simplest accessible print-ready HTML or document format supported by the environment.
-3. Apply only the approved content. Do not change typography, margins, or spacing merely to hide overflow.
-4. Render and inspect the actual preview using `references/layout-policy.md`.
-5. Show the preview and state clearly that the final PDF has not been generated.
+Candidate bullets must start with an action word, target 22–28 English words, never exceed 30 words or two rendered lines, preserve ownership and metrics, bold one high-value delivery/decision/capability when supported, and include a defensible result when available.
 
-After preview approval, update `run.md` to `preview-approved` and record a build hash or exact artifact identity.
+### Keyword Match
 
-## Generate the PDF
+Show full bullets changed only through ordinary JD vocabulary. Underline only the changed phrases in the discussion; remove all underlines from the final résumé.
 
-Only after preview approval:
+```text
+Experience #3：
+• Led a cross-functional evaluation workstream, defining <u>success criteria</u>, <u>bad-case taxonomy</u>, and <u>release recommendations</u>.
 
-1. Generate the PDF from the approved build.
-2. Re-run text, page, overflow, link, and visual checks.
-3. Ensure the PDF contains selectable text and normal reading order; never use a full-page raster as the résumé.
-4. Update `run.md` to `final` and record the final artifact paths.
-5. Return the final preview and a clickable PDF link.
-6. Release `.active.lock` with the same owner ID.
+Skills：
+Add：<u>Product Roadmapping</u>, <u>AI Evaluation</u>
+Remove：<u>outdated or low-value term</u>
+Reorder：move <u>Experiment Design</u> earlier.
+```
 
-Never submit an application, upload the résumé to a job site, or imply submission without a separate explicit request.
+Keep lines inside one entry adjacent; use one blank line only between entries. Keyword changes cannot invent evidence, ownership, tools, or metrics.
+
+Invite the user to approve all, modify one bullet, reject a direction, or add evidence. Update only affected blocks. Approval of every displayed material bullet, keyword-only bullet, and Skills change is final content approval; set state `changes-approved`.
+
+## 2. Internal Preview QA and PDF
+
+After state `changes-approved`:
+
+1. create a derivative without overwriting the uploaded résumé;
+2. apply only approved changes and preserve everything else;
+3. strip discussion-only underline annotations;
+4. render and inspect the actual preview using `references/layout-policy.md`;
+5. if QA requires a material semantic change, return only the affected bullet for approval; otherwise continue automatically;
+6. generate the PDF from the validated build and rerun page, text, overflow, link, and visual checks;
+7. return a clickable PDF link and set state `final`.
+
+If the environment cannot render or inspect a PDF, return the approved changed content and state the missing capability. Never pretend a file exists. Never submit or upload an application without a separate explicit request.

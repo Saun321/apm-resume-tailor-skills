@@ -1,4 +1,4 @@
 interface:
   display_name: "Resume Tailor"
-  short_description: "Tailor with evidence and approval gates"
-  default_prompt: "Use $resume-tailor to tailor my uploaded resume for this JD using only verified evidence."
+  short_description: "Discuss changed bullets, then generate PDF"
+  default_prompt: "Use $resume-tailor to show only Core Evidence Changes and Keyword Match, then generate the PDF after I approve all changes."
