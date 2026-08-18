@@ -21,6 +21,6 @@ Inspect the actual rendered artifact for:
 
 If QA requires a material change to meaning, ownership, scope, or result, return only that bullet for approval. Otherwise continue directly to PDF without another user gate.
 
-## PDF checks
+## PDF and ATS checks
 
-Confirm page size/count, selectable text, normal extraction and reading order, active links when supported, and final visual quality. The page must not be a full-page raster. If rendering is unavailable, state the limitation and do not claim completion.
+Confirm page size/count, selectable text, normal extraction and reading order, recognizable section headings, active links when supported, and final visual quality. Check that ATS extraction preserves the candidate name, section order, employers, titles, dates, and bullet text without raster-only content or garbled reading order. The page must not be a full-page raster. If rendering is unavailable, state the limitation and do not claim completion.

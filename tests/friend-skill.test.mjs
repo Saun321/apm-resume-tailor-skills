@@ -6,6 +6,7 @@ import test from "node:test";
 const friendRoot = new URL("../friend-package/APM-Resume-Tailor-Friend/", import.meta.url);
 const skillPath = new URL("apm-resume-tailor/SKILL.md", friendRoot);
 const bulletDesignPath = new URL("apm-resume-tailor/references/bullet-design.md", friendRoot);
+const friendLibraryPath = new URL("apm-resume-tailor/references/bullet-library.md", friendRoot);
 
 test("friend share package contains Chinese onboarding and every required artifact", async () => {
   for (const relative of [
@@ -14,6 +15,7 @@ test("friend share package contains Chinese onboarding and every required artifa
     "workflow.png",
     "apm-resume-tailor/SKILL.md",
     "apm-resume-tailor/references/bullet-design.md",
+    "apm-resume-tailor/references/bullet-library.md",
   ]) {
     assert.ok(existsSync(new URL(relative, friendRoot)), `Missing ${relative}`);
   }
@@ -27,6 +29,7 @@ test("friend share package contains Chinese onboarding and every required artifa
 test("friend skill is standalone, evidence-safe, and uses the fast changed-bullet flow", async () => {
   const skill = await readFile(skillPath, "utf8");
   const bulletDesign = await readFile(bulletDesignPath, "utf8");
+  const bulletLibrary = await readFile(friendLibraryPath, "utf8");
 
   for (const required of [
     "complete JD",
@@ -41,7 +44,11 @@ test("friend skill is standalone, evidence-safe, and uses the fast changed-bulle
     "Keyword Match",
     "internal Preview QA",
     "PDF",
+    "ATS",
+    "Bullet Library",
+    "human feedback",
     "references/bullet-design.md",
+    "references/bullet-library.md",
   ]) {
     assert.match(skill, new RegExp(required.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"));
   }
@@ -62,9 +69,9 @@ test("friend skill is standalone, evidence-safe, and uses the fast changed-bulle
   }
 
   const examples = new Map([
-    ["Delivery-led", "Owned"],
+    ["Delivery-led", "Launched"],
     ["Decision-led", "Prioritized"],
-    ["Collaboration-led", "Led"],
+    ["Collaboration-led", "Aligned"],
     ["Workstream-led", "Ran"],
   ]);
 
@@ -85,7 +92,19 @@ test("friend skill is standalone, evidence-safe, and uses the fast changed-bulle
     "Material Change Log",
     "preview approval",
   ]) {
-    assert.doesNotMatch(`${skill}\n${bulletDesign}`, new RegExp(forbidden.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"));
+    assert.doesNotMatch(`${skill}\n${bulletDesign}\n${bulletLibrary}`, new RegExp(forbidden.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "i"));
+  }
+
+  for (const phrase of [
+    "wording memory, not evidence",
+    "Experience",
+    "Project",
+    "Tailor Focus",
+    "Approved Bullet",
+    "materially distinct",
+    "human-approved",
+  ]) {
+    assert.match(bulletLibrary, new RegExp(phrase, "i"));
   }
 });
 
@@ -102,6 +121,9 @@ test("friend share package diagram is a simplified Chinese swimlane", async () =
     "讨论改写后的 bullets",
     "验收全部改动",
     "Internal QA",
+    "ATS + Layout QA",
+    "Search Bullet Library",
+    "Save Adopted Bullets",
     "下载 PDF",
   ]) {
     assert.ok(diagram.includes(label), `Missing ${label}`);
@@ -118,6 +140,10 @@ test("public skills use Decision-first changed-bullet workflow", async () => {
     new URL("../skills/resume-tailor/SKILL.md", import.meta.url),
     "utf8",
   );
+  const library = await readFile(
+    new URL("../skills/resume-tailor/references/bullet-library.md", import.meta.url),
+    "utf8",
+  );
 
   assert.ok(intake.indexOf("Suggested Decision") < intake.indexOf("Layer 1"));
   for (const phrase of ["Layer 1", "Layer 2", "Layer 3"]) {
@@ -128,6 +154,10 @@ test("public skills use Decision-first changed-bullet workflow", async () => {
     "Keyword Match",
     "optional approved Bullet Library",
     "internal Preview QA",
+    "ATS",
+    "human feedback",
+    "search the Bullet Library before drafting",
+    "save adopted bullets",
     "【Point Change】",
   ]) {
     assert.match(tailor, new RegExp(phrase, "i"));
@@ -139,9 +169,29 @@ test("public skills use Decision-first changed-bullet workflow", async () => {
     assert.doesNotMatch(policy, /<u>|<\/u>/i);
   }
   assert.doesNotMatch(
-    `${intake}\n${tailor}`,
+    `${intake}\n${tailor}\n${library}`,
     /Story Bank|P2V|\/Users\/xinchen|Complete Draft|Material Change Log|preview approval/i,
   );
+  assert.match(library, /wording memory, not evidence/i);
+  assert.match(library, /Tailor Focus[\s\S]*Approved Bullet/i);
+  assert.match(library, /materially distinct/i);
+});
+
+test("README leads with the decode, feedback, QA, and reuse loop", async () => {
+  const readme = await readFile(new URL("../README.md", import.meta.url), "utf8");
+  for (const phrase of [
+    "JD Decode",
+    "Current Match",
+    "Tailored Match",
+    "bullet-centered",
+    "human feedback",
+    "ATS",
+    "Bullet Library",
+    "adopted",
+    "reuse",
+  ]) {
+    assert.match(readme, new RegExp(phrase, "i"));
+  }
 });
 
 test("public diagram shows the generalized fast route", async () => {
@@ -156,6 +206,9 @@ test("public diagram shows the generalized fast route", async () => {
     "Changed-Bullet Discussion",
     "Approve Changes",
     "Internal QA",
+    "ATS + Layout QA",
+    "Search Bullet Library",
+    "Save Adopted Bullets",
     "Download PDF",
   ]) {
     assert.ok(diagram.includes(label), `Missing ${label}`);

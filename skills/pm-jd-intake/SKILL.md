@@ -27,6 +27,8 @@ Read completely:
    - Current Match uses only résumé-visible evidence.
    - Tailored Match adds only verified, slot-feasible evidence.
 
+Keep the JD Decode, M/N/H IDs, Current Match, and Tailored Match together in the handoff so résumé tailoring can propose requirement-linked bullet changes without re-decoding the role.
+
 Do not award points for keyword swaps, planned learning, unclear ownership, or content that cannot fit the selected résumé format.
 
 ## Render Decision first, then all three layers

@@ -14,7 +14,7 @@ Optional inputs are user-confirmed evidence and an editable résumé template. U
 
 Never invent or upgrade ownership, decision authority, delivery state, metrics, causality, scope, audience, technical depth, or product maturity.
 
-Before drafting any résumé bullet, read `references/bullet-design.md` completely.
+Before drafting any résumé bullet, read `references/bullet-design.md` and `references/bullet-library.md` completely. Search the Bullet Library before drafting by Experience, Project, and Tailor Focus; revalidate every candidate against the current résumé or user-confirmed evidence because the library is wording memory, not evidence.
 
 ## 1. Suggested Decision and three-layer Intake
 
@@ -85,7 +85,7 @@ Remove：&lt;low-value term&gt;
 Reorder：move &lt;Experiment Design&gt; earlier.
 ```
 
-The user may approve all, edit one bullet, reject a direction, or add evidence. Revise only affected blocks. Approval of every displayed change is final content approval.
+Invite human feedback: the user may approve all, edit one bullet, reject a direction, or add evidence. Revise only affected blocks. Approval of every displayed change is final content approval.
 
 ## 3. Internal Preview QA and PDF
 
@@ -96,7 +96,9 @@ After changed-content approval:
 3. remove discussion-only angle-bracket wrappers while preserving their inner words;
 4. render and inspect the actual preview for page count, two-line bullets, bolding consistency, clipping, overlap, links, selectable text, and reading order;
 5. return only an affected bullet if QA requires a material semantic change; otherwise continue automatically;
-6. generate the PDF from the validated build and return a clickable link.
+6. generate the PDF from the validated build and run ATS plus layout QA for page count, selectable text, section order, employer/title/date parsing, bullet extraction, links, overflow, and visual integrity;
+7. after QA passes, save adopted bullets to the optional Bullet Library only when they are final, human-approved, and materially distinct; skip keyword-only and light-synonym variants;
+8. return a clickable PDF link.
 
 If rendering tools are unavailable, state the limitation and return the approved changes without pretending a file exists. Never submit or upload an application without a separate explicit request.
 

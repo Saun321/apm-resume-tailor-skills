@@ -15,11 +15,14 @@ Read completely:
 
 - `references/evidence-policy.md`
 - `references/bullet-policy.md`
+- `references/bullet-library.md`
 - `references/layout-policy.md`
 
 Use one writer per job directory. If the included lock script is used, claim the directory before writing and release it after final completion. Treat the source résumé, evidence files, and optional library as read-only.
 
 ## Allocate internally
+
+Search the Bullet Library before drafting by Experience, Project, and Tailor Focus. Revalidate every candidate against current authoritative evidence. Reuse approved wording when it fits; otherwise draft from verified evidence. Never turn library wording into new evidence.
 
 Map the highest-value M/N/H requirements to existing résumé slots. Preserve sections, entry order, page target, and bullet allocation by default. Propose a structural trade only when it materially improves Core coverage, explain any displaced content, and require approval of the changed bullet set before applying it.
 
@@ -62,7 +65,7 @@ Reorder：move &lt;Experiment Design&gt; earlier.
 
 Keep lines inside one entry adjacent; use one blank line only between entries. Keyword changes cannot invent evidence, ownership, tools, or metrics.
 
-Invite the user to approve all, modify one bullet, reject a direction, or add evidence. Update only affected blocks. Approval of every displayed material bullet, keyword-only bullet, and Skills change is final content approval; set state `changes-approved`.
+Invite human feedback: approve all, modify one bullet, reject a direction, or add evidence. Update only affected blocks. Approval of every displayed material bullet, keyword-only bullet, and Skills change is final content approval; set state `changes-approved`.
 
 ## 2. Internal Preview QA and PDF
 
@@ -73,7 +76,8 @@ After state `changes-approved`:
 3. strip discussion-only angle-bracket wrappers while preserving their inner words;
 4. render and inspect the actual preview using `references/layout-policy.md`;
 5. if QA requires a material semantic change, return only the affected bullet for approval; otherwise continue automatically;
-6. generate the PDF from the validated build and rerun page, text, overflow, link, and visual checks;
-7. return a clickable PDF link and set state `final`.
+6. generate the PDF from the validated build and run ATS plus layout QA: page count, selectable text, reading order, section parsing, links, overflow, and visual integrity;
+7. after QA passes, save adopted bullets to the optional Bullet Library only when they are human-approved and materially distinct; merge narrowly without changing unrelated rows;
+8. return a clickable PDF link and set state `final`.
 
 If the environment cannot render or inspect a PDF, return the approved changed content and state the missing capability. Never pretend a file exists. Never submit or upload an application without a separate explicit request.

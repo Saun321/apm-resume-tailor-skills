@@ -53,13 +53,13 @@ Keep the label and bullet on adjacent lines with no blank line.
 
 For keyword-only changes, render visible `<keyword>` markers by emitting `&lt;keyword&gt;`. Remove the angle brackets before final output and keep the inner words.
 
-## Accepted examples
+## Synthetic examples
 
-**Examples teach structure only. Never transfer their companies, products, facts, ownership, or metrics into another person's résumé.**
+**Examples teach structure only. They are synthetic and never authorize facts, ownership, or metrics.**
 
-- **Delivery-led:** `Owned 0-to-1 development of **Creative Hook Refresh**, combining Seedance visual hooks and POV overlays to refresh live ads and combat creative fatigue, delivering ~5% advertiser-value uplift`
-- **Decision-led:** `Prioritized **precision-first VLM rebuild** over URL parsing after wrong-product ad incident paused 30%+ of GenAI strategies; traded 20pp coverage for 95% Loose Accuracy and restored strategies in 3 weeks`
-- **Collaboration-led:** `Led 20+ ML, Creative, and PM partners to calibrate evaluation across AI Video Remix’s product-understanding and storyline-planning models, improving information-quality and alignment SBS scores by 20pp`
-- **Workstream-led:** `Ran customer interviews and competitive research for persona-driven post generation, synthesizing findings into **PRD and backlog updates** that increased draft adoption by 40%`
+- **Delivery-led:** `Launched **guided onboarding flow** from user interviews and funnel analysis, translating findings into prioritized requirements that improved new-user activation by 18%`
+- **Decision-led:** `Prioritized **self-serve onboarding** over advanced customization after support data identified activation friction; focused first release on guided setup and improved activation by 18%`
+- **Collaboration-led:** `Aligned Design, Engineering, and Go-to-Market partners on **shared launch criteria**, resolving ownership and dependency gaps to keep cross-functional beta on schedule`
+- **Workstream-led:** `Ran customer interviews and funnel analysis for onboarding, synthesizing findings into **PRD and backlog recommendations** that guided product lead's first-release priorities`
 
 Shift emphasis without changing facts: foreground delivery for shipping-heavy JDs, chosen path for decision-heavy JDs, shared work for collaboration-heavy JDs, or bounded PM support for fundamentals-heavy roles.

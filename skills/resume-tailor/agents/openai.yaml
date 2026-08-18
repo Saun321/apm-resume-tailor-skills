@@ -1,4 +1,4 @@
 interface:
   display_name: "Resume Tailor"
-  short_description: "Discuss changed bullets, then generate PDF"
-  default_prompt: "Use $resume-tailor to show only Core Evidence Changes and Keyword Match, then generate the PDF after I approve all changes."
+  short_description: "Tailor bullets, validate PDF, reuse adopted wording"
+  default_prompt: "Use $resume-tailor to search my optional Bullet Library, show only Core Evidence Changes and Keyword Match, incorporate my feedback, then generate and ATS-check the PDF after I approve all changes."

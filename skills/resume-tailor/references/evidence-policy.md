@@ -35,4 +35,4 @@ Planned learning, future portfolios, and unfinished projects may become a learni
 
 ## Approved Bullet Library
 
-The library is optional and must not block a first run. Store only final, approved, materially distinct résumé-grade bullets. Group entries by experience/project and tailoring focus. Do not store light synonym, punctuation, or keyword-only variants. A library entry is an expression candidate, not independent proof.
+The library is optional and must not block a first run. Search it before drafting, but revalidate every row against the current résumé or verified evidence. Store only final, human-approved, materially distinct résumé-grade bullets after PDF and ATS/layout QA pass. Group entries by Experience, Project, and Tailor Focus. Do not store light synonym, punctuation, grammar, bolding, or keyword-only variants. A library entry is an expression candidate, not independent proof.
