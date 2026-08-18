@@ -5,9 +5,10 @@
 Use sources in this order:
 
 1. Uploaded current résumé for current facts and structure.
-2. Evidence explicitly marked `verified` by the user or an authoritative source file.
-3. Facts the user explicitly confirms for this application.
-4. Everything else is `unverified` and unusable.
+2. Optional approved Bullet Library for previously accepted wording only; revalidate every claim against current authoritative evidence.
+3. Evidence explicitly marked `verified` by the user or an authoritative source file.
+4. Facts the user explicitly confirms for this application.
+5. Everything else is `unverified` and unusable.
 
 When sources conflict, keep the more conservative claim and flag the conflict. Do not silently rewrite the source résumé or long-term evidence file.
 
@@ -31,3 +32,7 @@ Use supplemental evidence only when it is specific enough to defend in an interv
 If the user remembers a new fact during tailoring, label it `user-confirmed` in the run. Ask one follow-up only if a missing ownership, artifact, audience, or outcome detail changes Core coverage. Otherwise use conservative wording.
 
 Planned learning, future portfolios, and unfinished projects may become a learning suggestion but never résumé evidence.
+
+## Approved Bullet Library
+
+The library is optional and must not block a first run. Search it before drafting, but revalidate every row against the current résumé or verified evidence. Store only final, human-approved, materially distinct résumé-grade bullets after PDF and ATS/layout QA pass. Group entries by Experience, Project, and Tailor Focus. Do not store light synonym, punctuation, grammar, bolding, or keyword-only variants. A library entry is an expression candidate, not independent proof.

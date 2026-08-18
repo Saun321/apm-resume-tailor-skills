@@ -1,61 +1,46 @@
 # Intake Output Template
 
-Keep each summary field to one paragraph when possible.
-
-## Decision summary
+## Suggested Decision
 
 ```text
-JD actually seeks: <person + problem + main deliverable>.
-
-Route: <Tailor / User decides / No Tailor / KILL> — <decisive reason>.
-
-Current Match: <range> · <band>.
-
-Components: Must <percent> · Nice <percent or N/A> · Hidden <percent>.
-
-Projected Achievable Match: <range> · <band>; Tailoring Leverage: <delta and band/Core effect>.
+┌ Suggested Decision · <TAILOR & APPLY / APPLY CURRENT RÉSUMÉ / USER DECIDES / QUICK APPLY / SKIP / KILL> ┐
+Current Match: <range> · <band>
+Tailored Match: <range> · <band>
+Reason: <one decisive evidence-backed sentence>.
+Next: <auto-enter Tailoring Discussion / wait / quick apply / stop>.
+└────────────────────────────────────────────────────────────────────────────┘
 ```
 
-### Tailoring opportunities
+## Layer 1 · JD Decode
 
-Use up to three compact paragraphs:
+Use 3–5 decisive pairs. Do not use list dashes. Keep each quote adjacent to its capability decode.
 
 ```text
-[M1] <capability>: current loss <reason>; verified evidence <source>; planned recognition change <effect>.
+“<exact JD excerpt>”
+【<Capability>】：<concise hiring translation>; <what it means and does not mean>.
 ```
 
-### Decision-limiting gaps
+## Layer 2 · Requirement Scorecard
 
-Use up to three compact paragraphs. Omit low-value gaps.
+`Must <percent> · Nice <percent or N/A> · Hidden <percent>`
 
-## Five-layer decode
+| ID | Capability | Score | Why | Current judgment |
+|---|---|---:|---|---|
+| Core M1 | <capability> | <1/1 or 🟠 **0.5/1 ↓** or 🔴 **0/1 ↓**> | <why decisive> | <visible evidence and limitation> |
+| Must M2 | <capability> | <score> | <why required> | <judgment> |
+| Nice N1 | <capability> | <score> | <why additive> | <judgment> |
+| Hidden H1 | <capability> | <score> | <why it matters> | <judgment> |
 
-1. **Hiring-manager need:** 3–5 `JD says → actually needs` translations.
-2. **Must-haves:** table with ID, requirement, `Core/Regular`, reason, Current evidence, and `0/0.5/1` score.
-3. **Nice-to-haves:** genuine differentiators only; use `N/A` if none.
-4. **Hidden Signals:** wording, inference, application implication, and Current score for 3–5 signals.
-5. **Company/product context:** product line, stage, users/business model, PM responsibility area, and additive why-now insight. Label each Official, JD inference, or Unknown.
+Keep Core weighting internal. Visibly mark partial and missing scores; do not emphasize `1/1`.
 
-## Selective Interactive Intake Card
+## Layer 3 · Company & Product Research
 
-Show only when Current is `50–69%` and Projected is `70%+`:
+| Dimension | Compact research |
+|---|---|
+| Company | Big Tech: group and business growth. Mid-tech: market value and growth. Startup: funding stage, valuation, and growth. |
+| PM product | Product, functions, and stage. For AI, state the application scenario, target user, workflow, and problem being solved. |
+| Users / growth / economics | Users, public scale metrics, growth, and monetization when available. |
+| PM responsibility | Problem area, product boundary, workstreams, and deliverables. |
+| Why hire | Expansion, new product, missing capability, or transformation; label inference. |
 
-```text
-Interactive Intake Card
-
-Initial Current Match: <range and band>.
-
-Initial Projected Achievable Match: <range and band>.
-
-Main evidence bottleneck: <one or two M/N/H IDs and missing evidence>.
-
-Evidence that could change the judgment: <specific experience, artifact, audience, ownership, or outcome>.
-
-Please confirm: <one decision-changing question>?
-```
-
-Stop after the Card. Do not draft bullets, modify the résumé, create a preview/PDF, or write shared files.
-
-## Route-supported action
-
-Show only applicable choices: `Start Resume Tailoring / Quick Apply / Skip`.
+Always render all three layers. Then auto-continue only for `TAILOR & APPLY`; otherwise stop.

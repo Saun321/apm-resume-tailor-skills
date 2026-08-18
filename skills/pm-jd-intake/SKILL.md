@@ -1,86 +1,53 @@
 ---
 name: pm-jd-intake
-description: Decode a product-management job description, score the uploaded resume's Current Match separately from its evidence-backed Projected Achievable Match, and decide whether resume tailoring is worth the user's time. Use for JD review, fit checks, apply-or-skip decisions, and pre-tailoring intake. Never rewrite the resume without explicit authorization.
+description: Decode a product-management JD, score Current Match separately from evidence-backed Tailored Match, show a Decision-first three-layer brief, and route to automatic changed-bullet discussion, user choice, Quick Apply, Skip, or KILL. Use for JD review, fit checks, and apply-or-tailor decisions.
 ---
 
 # PM JD Intake
 
-Determine whether truthful tailoring can materially improve interview-relevant résumé fit. Treat Match as résumé-to-JD evidence fit, not interview probability.
+Determine whether truthful tailoring can materially improve résumé recognition. Match is résumé-to-JD evidence fit, not interview probability.
 
 ## Load inputs
 
-Require:
+Require the complete JD and current résumé. Optionally load a verified evidence file or facts the user confirms in the current conversation. Classify supplemental claims as `verified`, `user-confirmed`, or `unverified`; never score or write `unverified` evidence.
 
-1. The complete JD, pasted or provided as an exact file path.
-2. The current résumé, in PDF, DOCX, Markdown, text, or HTML.
-
-Optionally load a separate evidence file or user statements. Classify every supplemental claim as:
-
-- `verified`: supported by a source the user identifies as authoritative;
-- `user-confirmed`: explicitly confirmed by the user for this application;
-- `unverified`: inferred, uncertain, planned, or contradicted.
-
-Use the visible current résumé for Current Match. Use only `verified` and `user-confirmed` evidence for Projected Achievable Match. Never use `unverified` evidence in a score or draft.
-
-Read these references completely before scoring:
+Read completely:
 
 - `references/decode-patterns.md`
 - `references/match-rubric.md`
 - `references/output-template.md`
 
-## Decode once
+## Decode and score once
 
-1. Translate the JD into the person, problem, and deliverables the hiring manager actually needs.
-2. Deduplicate requirements. Create 3–5 Must-haves, genuine Nice-to-haves, and 3–5 decisive Hidden Signals.
-3. Label Must-haves only `Core` or `Regular`. Use IDs `M1…`, `N1…`, and `H1…` throughout.
-4. Separate legal or true eligibility gates from preferences and opportunity-priority factors.
-5. Write the three questions a recruiter or hiring manager must answer “yes” to after reading the résumé.
+1. Translate the JD into the person, problem, capabilities, and deliverables the hiring manager needs.
+2. Deduplicate requirements into 3–5 Core/Regular Must-haves, genuine Nice-to-haves, and 3–5 decisive Hidden Signals.
+3. Reuse IDs `M1…`, `N1…`, and `H1…` across scoring and tailoring.
+4. Separate true eligibility gates from preferences and opportunity-priority factors.
+5. Score the same map twice using `1 / 0.5 / 0` and Core `1.5×` weighting:
+   - Current Match uses only résumé-visible evidence.
+   - Tailored Match adds only verified, slot-feasible evidence.
 
-## Score Current and Projected
+Keep the JD Decode, M/N/H IDs, Current Match, and Tailored Match together in the handoff so résumé tailoring can propose requirement-linked bullet changes without re-decoding the role.
 
-Apply `references/match-rubric.md` to the same requirements and weights twice:
+Do not award points for keyword swaps, planned learning, unclear ownership, or content that cannot fit the selected résumé format.
 
-- **Current Match:** use only evidence visible in the uploaded résumé.
-- **Projected Achievable Match:** add only verified evidence that can realistically fit the résumé's existing structure without harming readability or displacing more important proof.
+## Render Decision first, then all three layers
 
-Allocate projected evidence to a plausible bullet or skills slot before awarding points. Do not count keyword swaps, planned learning, unfinished work, or evidence with unclear ownership. Report a range, never a single-point percentage.
+Follow `references/output-template.md` in this exact order:
 
-## Return the decision brief
+1. `Suggested Decision` with Current Match, Tailored Match, one decisive reason, and next step.
+2. `Layer 1 · JD Decode`: exact JD quote followed immediately by `【Capability】：` hiring translation; no list dash.
+3. `Layer 2 · Requirement Scorecard`: one table for Core Must, Must, Nice, and Hidden; keep ID and Capability in separate columns and visibly mark every lost point.
+4. `Layer 3 · Company & Product Research`: company context, PM product, users/growth/economics, responsibility, and why hire. For AI products, describe the application scenario, user workflow, and problem solved rather than only naming a model.
 
-Follow `references/output-template.md`. Lead with:
+Always show all three layers, including Quick Apply, Skip, and KILL routes.
 
-- what the JD actually seeks;
-- route and decisive reason;
-- Current Match range and component scores;
-- Projected Achievable Match and Tailoring Leverage;
-- up to three high-value tailoring opportunities;
-- up to three decision-limiting gaps.
+## Route
 
-Then provide the compact five-layer decode and the reproducibility table. Keep Match separate from location, compensation, company preference, application cost, and other opportunity-priority factors.
+- `TAILOR & APPLY`: Tailored Match is Strong/Direct and at least one truthful evidence or keyword change improves recognition, Core coverage, or application quality. Continue automatically to the `resume-tailor` discussion.
+- `APPLY CURRENT RÉSUMÉ`: Current is already strong and no useful change exists.
+- `USER DECIDES`: Tailored Match remains Medium or upside is questionable. Stop after Layer 3; continue only if the user asks.
+- `QUICK APPLY / SKIP`: Tailored Match remains Weak or the time investment is not justified.
+- `KILL`: a true eligibility gate fails; wording cannot repair it.
 
-## Use the selective evidence gate
-
-Generate one Interactive Intake Card only when both central scores satisfy:
-
-- Current Match is `50–69%`;
-- Projected Achievable Match is `70%+`.
-
-Ask at most one question, only when the answer can change Core coverage, Projected Match, or evidence allocation. After the Card, stop. New evidence may change Projected Match but never Current Match until it is actually written into the résumé.
-
-For other outcomes:
-
-- Current already Strong/Direct: give the compact result and offer `Start Resume Tailoring`.
-- Projected is Medium: let the user choose whether the opportunity is worth tailoring.
-- Projected remains Weak/No Match: recommend no tailoring; allow only a near-zero-cost quick-apply exception.
-- A true eligibility gate fails: return `KILL` and stop.
-
-## Persist only after authorization
-
-Do not modify the résumé or write a run file during ordinary Intake. Only after the user says `Start Resume Tailoring` or directly requests a rewrite:
-
-1. Copy `references/run-template.md` to a user-selected job directory as `run.md`.
-2. Embed the complete JD body in `run.md`, even when the original source was a URL or pasted chat message; also save its source, score ranges, requirement map, user-confirmed corrections, and Compact Tailoring Handoff.
-3. Set state to `tailoring-authorized`.
-4. Stop before drafting if the user has not yet authorized résumé changes.
-
-Use one run directory per JD. During Intake, `run.md` is the only allowed persisted file; never write a draft, personal source file, shared tracker, preview, or PDF.
+For a durable or fresh-conversation handoff, copy `references/run-template.md` into a user-selected job directory, embed the exact JD, and set state `discussion-ready`. Intake never creates résumé derivatives, previews, or PDFs.

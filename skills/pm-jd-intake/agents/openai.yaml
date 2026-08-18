@@ -1,4 +1,4 @@
 interface:
   display_name: "PM JD Intake"
-  short_description: "Score JD fit before spending time tailoring"
-  default_prompt: "Use $pm-jd-intake to compare my uploaded resume with this job description and tell me whether tailoring is worth it."
+  short_description: "Decision-first JD fit and tailoring route"
+  default_prompt: "Use $pm-jd-intake to show Suggested Decision first, then the complete three-layer Decode for my résumé and JD."
